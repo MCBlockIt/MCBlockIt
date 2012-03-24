@@ -1,0 +1,6 @@
+name: MCBlockIt
+main: it.mcblock.mcblockit.MCBlockItPlugin
+description: ${project.description}
+author: mbaxter
+url: http://mcblock.it
+version: '${project.version}'

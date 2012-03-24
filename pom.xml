@@ -28,7 +28,7 @@
     <dependencies>
         <dependency>
             <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
+            <artifactId>craftbukkit</artifactId>
             <version>1.2.4-R0.1-SNAPSHOT</version>
             <type>jar</type>
             <scope>compile</scope>
@@ -38,7 +38,7 @@
     <build>
         <defaultGoal>clean package</defaultGoal>
         <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
-        <finalName>${artifactId}${version}</finalName>
+        <finalName>${artifactId}</finalName>
         <resources>
             <resource>
                 <targetPath>.</targetPath>
@@ -46,6 +46,9 @@
                 <directory>${basedir}/src/main/resources</directory>
                 <includes>
                     <include>plugin.yml</include>
+                    <include>config.yml</include>
+                    <include>README</include>
+                    <include>LICENSE</include>
                 </includes>
             </resource>
         </resources>

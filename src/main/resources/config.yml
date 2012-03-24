@@ -1,0 +1,23 @@
+#Restrictions
+#  Each section has a true/false "enabled" and a value
+#   Values vary by setting:
+#     Reputation: A number, can have decimal eg 0.1
+#     Bans: An integer. 
+#     Flags: Array of flags not allowed to join the server
+#       example: value: ['compromised'] or ['compromised','highalts']
+#   The value for reputation can have a decimal eg. 0.1
+#   
+#  Users attempting to join counts AT or above/below that value are blocked
+#   Example:
+#    Setting reputation to 0 means users with 0 rep or lower cannot join
+#     Bans to 5 means users with 5 bans or more cannot join
+restrictions:
+  reputation:
+    enable: true
+    value: 0
+  bans:
+    enable: false
+    value: 5
+  flags:
+    enable: false
+    value: ['compromised']

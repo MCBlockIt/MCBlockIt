@@ -4,3 +4,33 @@ description: ${project.description}
 author: mbaxter
 url: http://mcblock.it
 version: '${project.version}'
+commands:
+  ban:
+    usage: /ban username reason
+    description: Ban a user
+    permission: mcblockit.ban
+    permission-message: You may not ban.
+  kick:
+    usage: /kick username [reason]
+    description: Kick a user
+    permission: mcblockit.kick
+    permission-message: You may not kick.
+  unban:
+    usage: /unban username
+    description: Unban a user
+    permission: mcblockit.unban
+    permission-message: You may not unban.
+permissions:
+  mcblockit.ban:
+    description: Able to ban a user
+  mcblockit.kick:
+    description: Able to kick a user
+  mcblockit.unban:
+    description: Able to unban a user
+  mcblockit.*:
+    description: Grant ALL the nodes
+    default: op
+    children:
+      mcblockit.ban: true
+      mcblockit.kick: true
+      mcblockit.unban: true

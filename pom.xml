@@ -47,6 +47,12 @@
                 <includes>
                     <include>plugin.yml</include>
                     <include>config.yml</include>
+                </includes>
+            </resource>
+            <resource>
+                <targetPath>.</targetPath>
+                <directory>${basedir}</directory>
+                <includes>
                     <include>README</include>
                     <include>LICENSE</include>
                 </includes>

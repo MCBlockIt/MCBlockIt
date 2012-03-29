@@ -1,7 +1,7 @@
 package it.mcblock.mcblockit.commands;
 
 import it.mcblock.mcblockit.Utils;
-import it.mcblock.mcblockit.api.MCBlockItAPI;
+import it.mcblock.mcblockit.api.MCBukkIt;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -15,7 +15,7 @@ public class BanCommand implements CommandExecutor {
             return false;
         }
         final String reason = Utils.combineSplit(args, " ", 1, args.length - 1);
-        MCBlockItAPI.ban(args[0], sender.getName(), reason);
+        MCBukkIt.ban(args[0], sender.getName(), reason);
         return true;
     }
 

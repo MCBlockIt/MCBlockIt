@@ -33,6 +33,13 @@
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>it.mcblock.api</groupId>
+            <artifactId>MCBlockItAPI</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -49,14 +56,6 @@
                     <include>config.yml</include>
                 </includes>
             </resource>
-            <resource>
-                <targetPath>.</targetPath>
-                <directory>${basedir}</directory>
-                <includes>
-                    <include>README</include>
-                    <include>LICENSE</include>
-                </includes>
-            </resource>
         </resources>
         <plugins>
             <plugin>
@@ -66,6 +65,26 @@
                     <source>1.5</source>
                     <target>1.5</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                        <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <excludes>
+                                    <exclude>org.bukkit:*</exclude>
+                                </excludes>
+                            </artifactSet>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

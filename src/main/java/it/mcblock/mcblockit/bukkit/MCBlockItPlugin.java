@@ -1,10 +1,9 @@
-package it.mcblock.mcblockit;
+package it.mcblock.mcblockit.bukkit;
 
-import it.mcblock.mcblockit.api.MCBukkIt;
-import it.mcblock.mcblockit.commands.BanCommand;
-import it.mcblock.mcblockit.commands.KickCommand;
-import it.mcblock.mcblockit.commands.UnbanCommand;
-import it.mcblock.mcblockit.handlers.PlayerConnect;
+import it.mcblock.mcblockit.bukkit.command.BanCommand;
+import it.mcblock.mcblockit.bukkit.command.KickCommand;
+import it.mcblock.mcblockit.bukkit.command.UnbanCommand;
+import it.mcblock.mcblockit.bukkit.listener.PlayerConnect;
 
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -13,8 +12,8 @@ public class MCBlockItPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        if (MCBukkIt.enabled()) {
-            MCBukkIt.stop();
+        if (BukkitBlockItAPI.enabled()) {
+            BukkitBlockItAPI.stop();
         }
         instance=null;
         final PluginDescriptionFile description = this.getDescription();
@@ -37,7 +36,7 @@ public class MCBlockItPlugin extends JavaPlugin {
         this.getCommand("kick").setExecutor(new KickCommand());
         this.getCommand("unban").setExecutor(new UnbanCommand());
 
-        MCBukkIt.initialize(new MCBukkIt(this,apikey,this.getDataFolder()));
+        BukkitBlockItAPI.initialize(new BukkitBlockItAPI(this,apikey,this.getDataFolder()));
 
         instance=this;
         

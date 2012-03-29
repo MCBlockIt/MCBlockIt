@@ -1,6 +1,6 @@
-package it.mcblock.mcblockit.api;
+package it.mcblock.mcblockit.bukkit;
 
-import it.mcblock.mcblockit.MCBlockItPlugin;
+import it.mcblock.mcblockit.api.MCBIPlayer;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

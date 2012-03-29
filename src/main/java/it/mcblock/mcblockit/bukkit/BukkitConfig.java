@@ -1,11 +1,13 @@
-package it.mcblock.mcblockit.api;
+package it.mcblock.mcblockit.bukkit;
+
+import it.mcblock.mcblockit.api.MCBIConfig;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.configuration.Configuration;
 
-public class Bukkonfig implements MCBIConfig{
+public class BukkitConfig implements MCBIConfig{
     
     private int banRestriction;
     private List<String> flagRestriction;
@@ -14,7 +16,7 @@ public class Bukkonfig implements MCBIConfig{
     private boolean flagRestrictionEnabled;
     private boolean reputationRestrictionEnabled;
     
-    public Bukkonfig(Configuration config){
+    public BukkitConfig(Configuration config){
         this.banRestrictionEnabled=config.getBoolean("restriction.bans.enable", false);
         this.banRestriction=config.getInt("restrictions.bans.value",5);
         this.flagRestrictionEnabled=config.getBoolean("restriction.flags.enable",false);

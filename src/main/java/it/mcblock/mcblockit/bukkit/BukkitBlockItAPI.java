@@ -1,21 +1,22 @@
-package it.mcblock.mcblockit.api;
+package it.mcblock.mcblockit.bukkit;
 
-import it.mcblock.mcblockit.MCBlockItPlugin;
+import it.mcblock.mcblockit.api.MCBIConfig;
+import it.mcblock.mcblockit.api.MCBlockItAPI;
 
 import java.io.File;
 
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.CraftServer;
 
-public class MCBukkIt extends MCBlockItAPI {
+public class BukkitBlockItAPI extends MCBlockItAPI {
 
     private MCBlockItPlugin plugin;
-    private Bukkonfig config;
+    private BukkitConfig config;
 
-    public MCBukkIt(MCBlockItPlugin plugin,String APIKey, File dataFolder) {
+    public BukkitBlockItAPI(MCBlockItPlugin plugin,String APIKey, File dataFolder) {
         super(APIKey, dataFolder);
         this.plugin=plugin;
-        this.config=new Bukkonfig(plugin.getConfig());
+        this.config=new BukkitConfig(plugin.getConfig());
     }
 
     @Override

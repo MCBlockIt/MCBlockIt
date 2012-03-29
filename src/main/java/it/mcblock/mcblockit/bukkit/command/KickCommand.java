@@ -1,8 +1,8 @@
-package it.mcblock.mcblockit.commands;
+package it.mcblock.mcblockit.bukkit.command;
 
 import java.util.List;
 
-import it.mcblock.mcblockit.Utils;
+import it.mcblock.mcblockit.api.Utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

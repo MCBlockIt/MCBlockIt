@@ -1,6 +1,6 @@
-package it.mcblock.mcblockit.commands;
+package it.mcblock.mcblockit.bukkit.command;
 
-import it.mcblock.mcblockit.api.MCBukkIt;
+import it.mcblock.mcblockit.bukkit.BukkitBlockItAPI;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,7 +13,7 @@ public class UnbanCommand implements CommandExecutor {
         if (args.length < 1) {
             return false;
         }
-        MCBukkIt.unban(args[0]);
+        BukkitBlockItAPI.unban(args[0]);
         return true;
     }
 

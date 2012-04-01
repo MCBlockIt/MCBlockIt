@@ -11,6 +11,10 @@
 #   Example:
 #    Setting reputation to 0 means users with 0 rep or lower cannot join
 #     Bans to 5 means users with 5 bans or more cannot join
+#
+#  Settings:
+#   timeout: How long a user's data is cached, in minutes
+#             minimum 5
 restrictions:
   reputation:
     enable: true
@@ -21,3 +25,5 @@ restrictions:
   flags:
     enable: false
     value: ['compromised']
+settings:
+  timeout: 5

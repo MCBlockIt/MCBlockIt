@@ -1,5 +1,6 @@
 package it.mcblock.mcblockit.bukkit;
 
+import it.mcblock.mcblockit.api.MCBlockItAPI;
 import it.mcblock.mcblockit.bukkit.command.BanCommand;
 import it.mcblock.mcblockit.bukkit.command.KickCommand;
 import it.mcblock.mcblockit.bukkit.command.UnbanCommand;
@@ -10,20 +11,22 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class MCBlockItPlugin extends JavaPlugin {
 
+    public static MCBlockItPlugin instance;
+
     @Override
     public void onDisable() {
-        if (BukkitBlockItAPI.enabled()) {
-            BukkitBlockItAPI.stop();
+        if (MCBlockItAPI.enabled()) {
+            MCBlockItAPI.stop();
         }
-        instance=null;
+        MCBlockItPlugin.instance = null;
         final PluginDescriptionFile description = this.getDescription();
         this.getLogger().info(description.getName() + " v" + description.getVersion() + " disabled.");
     }
 
     @Override
     public void onEnable() {
-        String apikey=getConfig().getString("APIKEY");
-        if(apikey==null || apikey.length()!=32){
+        final String apikey = this.getConfig().getString("APIKEY");
+        if ((apikey == null) || (apikey.length() != 32)) {
             this.getLogger().warning("Set up your config and restart");
             this.getServer().getPluginManager().disablePlugin(this);
             return;
@@ -36,13 +39,11 @@ public class MCBlockItPlugin extends JavaPlugin {
         this.getCommand("kick").setExecutor(new KickCommand());
         this.getCommand("unban").setExecutor(new UnbanCommand());
 
-        BukkitBlockItAPI.initialize(new BukkitBlockItAPI(this,apikey,this.getDataFolder()));
+        MCBlockItAPI.initialize(new BukkitBlockItAPI(this, apikey, this.getDataFolder()));
 
-        instance=this;
-        
+        MCBlockItPlugin.instance = this;
+
         final PluginDescriptionFile description = this.getDescription();
         this.getLogger().info(description.getName() + " v" + description.getVersion() + " enabled.");
     }
-    
-    public static MCBlockItPlugin instance;
 }

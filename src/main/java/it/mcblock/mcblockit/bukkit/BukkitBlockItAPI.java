@@ -10,13 +10,13 @@ import org.bukkit.craftbukkit.CraftServer;
 
 public class BukkitBlockItAPI extends MCBlockItAPI {
 
-    private MCBlockItPlugin plugin;
-    private BukkitConfig config;
+    private final MCBlockItPlugin plugin;
+    private final BukkitConfig config;
 
-    public BukkitBlockItAPI(MCBlockItPlugin plugin,String APIKey, File dataFolder) {
+    public BukkitBlockItAPI(MCBlockItPlugin plugin, String APIKey, File dataFolder) {
         super(APIKey, dataFolder);
-        this.plugin=plugin;
-        this.config=new BukkitConfig(plugin.getConfig());
+        this.plugin = plugin;
+        this.config = new BukkitConfig(plugin.getConfig());
     }
 
     @Override
@@ -26,25 +26,38 @@ public class BukkitBlockItAPI extends MCBlockItAPI {
 
     @Override
     protected void banName(final String name) {
-        Bukkit.getScheduler().scheduleSyncDelayedTask(this.plugin, new Runnable(){
+        Bukkit.getScheduler().scheduleSyncDelayedTask(this.plugin, new Runnable() {
 
             @Override
             public void run() {
-                ((CraftServer)Bukkit.getServer()).getHandle().addUserBan(name.toLowerCase());
+                ((CraftServer) Bukkit.getServer()).getHandle().addUserBan(name.toLowerCase());
             }
-           
+
+        });
+    }
+
+    @Override
+    protected void shutdown() {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(this.plugin, new Runnable() {
+
+            @Override
+            public void run() {
+                BukkitBlockItAPI.this.plugin.getLogger().info("Shutting down...");
+                Bukkit.getPluginManager().disablePlugin(BukkitBlockItAPI.this.plugin);
+            }
+
         });
     }
 
     @Override
     protected void unbanName(final String name) {
-        Bukkit.getScheduler().scheduleSyncDelayedTask(this.plugin, new Runnable(){
+        Bukkit.getScheduler().scheduleSyncDelayedTask(this.plugin, new Runnable() {
 
             @Override
             public void run() {
-                ((CraftServer)Bukkit.getServer()).getHandle().removeUserBan(name.toLowerCase());
+                ((CraftServer) Bukkit.getServer()).getHandle().removeUserBan(name.toLowerCase());
             }
-           
+
         });
     }
 }

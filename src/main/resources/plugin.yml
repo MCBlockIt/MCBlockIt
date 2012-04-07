@@ -25,6 +25,8 @@ permissions:
     description: Able to ban a user
   mcblockit.kick:
     description: Able to kick a user
+  mcblockit.notifications:
+    description: Receive system notices
   mcblockit.unban:
     description: Able to unban a user
   mcblockit.*:
@@ -33,4 +35,5 @@ permissions:
     children:
       mcblockit.ban: true
       mcblockit.kick: true
+      mcblockit.notifications: true
       mcblockit.unban: true

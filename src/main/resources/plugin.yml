@@ -1,5 +1,5 @@
 name: MCBlockIt
-main: it.mcblock.mcblockit.MCBlockItPlugin
+main: it.mcblock.mcblockit.bukkit.MCBlockItPlugin
 description: ${project.description}
 author: mbaxter
 url: http://mcblock.it

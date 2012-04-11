@@ -1,5 +1,7 @@
 package it.mcblock.mcblockit.bukkit;
 
+import java.io.File;
+
 import it.mcblock.mcblockit.api.MCBlockItAPI;
 import it.mcblock.mcblockit.bukkit.command.BanCommand;
 import it.mcblock.mcblockit.bukkit.command.KickCommand;
@@ -25,14 +27,21 @@ public class MCBlockItPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        final File configFile=new File(this.getDataFolder(),"config.yml");
+        if(!configFile.exists()){
+            this.saveDefaultConfig();
+            this.getLogger().info("Creating empty config.yml");
+            this.getLogger().info("You need to set up your config and restart");
+            this.getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+        
         final String apikey = this.getConfig().getString("APIKEY");
-        if ((apikey == null) || (apikey.length() != 32)) {
+        if ((apikey == null) || (apikey.length() != 36)) {
             this.getLogger().warning("Set up your config and restart");
             this.getServer().getPluginManager().disablePlugin(this);
             return;
         }
-        this.getConfig().options().copyDefaults(true);
-        this.saveConfig();
 
         this.getServer().getPluginManager().registerEvents(new PlayerConnect(), this);
         this.getCommand("ban").setExecutor(new BanCommand());

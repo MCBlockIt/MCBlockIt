@@ -15,6 +15,7 @@
 #  Settings:
 #   timeout: How long a user's data is cached, in minutes
 #             minimum 5
+APIKEY: changeme
 restrictions:
   reputation:
     enable: true

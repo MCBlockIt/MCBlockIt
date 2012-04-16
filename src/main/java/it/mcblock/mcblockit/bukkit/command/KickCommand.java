@@ -22,9 +22,11 @@ public class KickCommand implements CommandExecutor {
         final List<Player> playerMatch = Bukkit.matchPlayer(args[0]);
         if (playerMatch.size() == 1) {
             final Player target = playerMatch.get(0);
-            String message = ChatColor.RED + "Kicked";
+            String message;
             if (reason.length() > 0) {
-                message += ": " + ChatColor.WHITE + reason;
+                message = "      " + ChatColor.RED + "Kicked: " + ChatColor.WHITE + reason;
+            } else {
+                message =  "   " + ChatColor.RED + "Kicked.";
             }
             if (commandLabel.equals("KICK")) {
                 target.getWorld().strikeLightningEffect(target.getLocation()); //BOOM

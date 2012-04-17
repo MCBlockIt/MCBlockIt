@@ -7,17 +7,20 @@ version: '${project.version}'
 commands:
   ban:
     usage: /ban username reason
+    aliases: [gban,b,gb]
     description: Ban a user
     permission: mcblockit.ban
     permission-message: You may not ban.
   kick:
     usage: /kick username [reason]
+    aliases: [k]
     description: Kick a user
     permission: mcblockit.kick
     permission-message: You may not kick.
   unban:
     usage: /unban username
     description: Unban a user
+    aliases: [pardon]
     permission: mcblockit.unban
     permission-message: You may not unban.
 permissions:

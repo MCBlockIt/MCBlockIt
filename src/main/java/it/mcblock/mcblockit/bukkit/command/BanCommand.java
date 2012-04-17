@@ -18,7 +18,7 @@ public class BanCommand implements CommandExecutor {
         final String reason = Utils.combineSplit(args, " ", 1, args.length - 1);
         BanType type;
         System.out.println("Type: " + label);
-        if (label.equals("BAN")) {
+        if (label.equalsIgnoreCase("gban") || label.equalsIgnoreCase("gb")) {
             type = BanType.GLOBAL;
         } else {
             type = BanType.LOCAL;

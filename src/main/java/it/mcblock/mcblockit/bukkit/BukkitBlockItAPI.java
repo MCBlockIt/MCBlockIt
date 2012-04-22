@@ -6,7 +6,6 @@ import it.mcblock.mcblockit.api.MCBlockItAPI;
 import java.io.File;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.CraftServer;
 
 /**
  * A Bukkit implementation of the MCBlockIt API
@@ -45,18 +44,6 @@ public class BukkitBlockItAPI extends MCBlockItAPI {
     }
 
     @Override
-    protected void banName(final String name) {
-        Bukkit.getScheduler().scheduleSyncDelayedTask(this.plugin, new Runnable() {
-
-            @Override
-            public void run() {
-                ((CraftServer) Bukkit.getServer()).getHandle().addUserBan(name.toLowerCase());
-            }
-
-        });
-    }
-
-    @Override
     protected void shutdown() {
         Bukkit.getScheduler().scheduleSyncDelayedTask(this.plugin, new Runnable() {
 
@@ -69,15 +56,4 @@ public class BukkitBlockItAPI extends MCBlockItAPI {
         });
     }
 
-    @Override
-    protected void unbanName(final String name) {
-        Bukkit.getScheduler().scheduleSyncDelayedTask(this.plugin, new Runnable() {
-
-            @Override
-            public void run() {
-                ((CraftServer) Bukkit.getServer()).getHandle().removeUserBan(name.toLowerCase());
-            }
-
-        });
-    }
 }

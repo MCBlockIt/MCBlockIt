@@ -3,7 +3,6 @@ package it.mcblock.mcblockit.bukkit.listener;
 import it.mcblock.mcblockit.bukkit.BukkitPlayer;
 import it.mcblock.mcblockit.bukkit.BukkitBlockItAPI;
 
-import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -35,7 +34,7 @@ public class PlayerConnect implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerPreLogin(PlayerPreLoginEvent event) {
-        if (Bukkit.getServer().getBannedPlayers().contains(Bukkit.getServer().getOfflinePlayer(event.getName()))) {
+        if (BukkitBlockItAPI.isBanned(event.getName())) {
             event.disallow(PlayerPreLoginEvent.Result.KICK_BANNED, BukkitBlockItAPI.KICK_REASON_BANNED);
         }
     }

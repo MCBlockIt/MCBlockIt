@@ -24,8 +24,8 @@
             <url>http://repo.bukkit.org/content/groups/public</url>
         </repository>
         <repository>
-            <id>kitteh-repo</id>
-            <url>http://repo.kitteh.org/content/groups/public</url>
+            <id>crashcraft-repo</id>
+            <url>http://neko.crashcraft.co.uk:8081/nexus/content/groups/public/</url>
         </repository>
     </repositories>
 
@@ -48,14 +48,14 @@
 
     <distributionManagement>
         <repository>
-            <id>kittehReleases</id>
-            <name>Kitteh Releases</name>
-            <url>http://repo.kitteh.org/content/repositories/releases</url>
+            <id>crashCraftReleases</id>
+            <name>CrashCraft Releases</name>
+            <url>http://neko.crashcraft.co.uk:8081/nexus/content/repositories/releases</url>
         </repository>
         <snapshotRepository>
-            <id>kittehSnapshots</id>
-            <name>Kitteh Snapshots</name>
-            <url>http://repo.kitteh.org/content/repositories/snapshots</url>
+            <id>crashCraftSnapshots</id>
+            <name>CrashCraft Snapshots</name>
+            <url>http://neko.crashcraft.co.uk:8081/nexus/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 

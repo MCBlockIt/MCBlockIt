@@ -14,12 +14,21 @@ public class BanImport extends Thread {
         if (Bukkit.getServer().getBannedPlayers().isEmpty()) this.interrupt();
         Set<OfflinePlayer> playerSet = Bukkit.getServer().getBannedPlayers();
         Integer importedPlayers = 0;
+        String[] importArray = new String[40];
         for (OfflinePlayer player : playerSet) {
             if (!BukkitBlockItAPI.isBanned(player.getName())) {
-                MCBlockItAPI.ban(player.getName(), "[Import]", BanType.LOCAL, "Imported from banned-players.txt");
+                importArray[importedPlayers] = player.getName();
                 importedPlayers++;
+                if (importArray.length == 40) {
+                    BukkitBlockItAPI.importBans(importArray);
+                    importArray = new String[40];
+                    importedPlayers = 0;
+                }
             }
             Bukkit.getServer().getBannedPlayers().remove(player);
+        }
+        if (importArray.length > 0) {
+            BukkitBlockItAPI.importBans(importArray);
         }
         Bukkit.getLogger().info(importedPlayers + " players imported from banned-players.txt!");
     }

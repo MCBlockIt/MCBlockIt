@@ -4,7 +4,7 @@
     <groupId>it.mcblock</groupId>
     <artifactId>mcblockit-bukkit</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>MCBlockIt ${version}</name>
+    <name>MCBlockIt ${project.version}</name>
     <url>http://www.mcblock.it/</url>
     <description>The premier minecraft global banning solution</description>
 

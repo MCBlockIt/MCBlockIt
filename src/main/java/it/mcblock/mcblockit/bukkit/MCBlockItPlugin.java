@@ -63,8 +63,11 @@ public class MCBlockItPlugin extends JavaPlugin {
             return;
         }
 
+        new BanImport().start();
+
         this.getServer().getPluginManager().registerEvents(new PlayerConnect(), this);
         this.getCommand("ban").setExecutor(new BanCommand());
+        this.getCommand("gban").setExecutor(new BanCommand());
         this.getCommand("kick").setExecutor(new KickCommand());
         this.getCommand("unban").setExecutor(new UnbanCommand());
 

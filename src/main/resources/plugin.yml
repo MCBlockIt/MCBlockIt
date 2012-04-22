@@ -7,10 +7,16 @@ version: '${project.version}'
 commands:
   ban:
     usage: /ban username reason
-    aliases: [gban,b,gb]
+    aliases: [b]
     description: Ban a user
-    permission: mcblockit.ban
-    permission-message: You may not ban.
+    permission: mcblockit.ban.local
+    permission-message: You may not local ban.
+  gban:
+    usage: /gban username reason
+    aliases: [gb]
+    description: Global ban a user
+    permission: mcblockit.ban.global
+    permission-message: You may not global ban.
   kick:
     usage: /kick username [reason]
     aliases: [k]
@@ -24,8 +30,15 @@ commands:
     permission: mcblockit.unban
     permission-message: You may not unban.
 permissions:
+  mcblockit.ban.local:
+    description: Able to local ban a user
+  mcblockit.ban.global:
+    description: Able to global ban a user
   mcblockit.ban:
-    description: Able to ban a user
+    description: Able to ban a user globally and locally
+    children:
+      mcblockit.ban.local: true
+      mcblockit.ban.global: true
   mcblockit.kick:
     description: Able to kick a user
   mcblockit.notifications:

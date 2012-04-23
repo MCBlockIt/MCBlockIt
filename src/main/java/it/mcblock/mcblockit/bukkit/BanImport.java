@@ -5,35 +5,30 @@ import it.mcblock.mcblockit.api.MCBlockItAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 public class BanImport extends Thread {
     @Override
     public void run () {
         if (Bukkit.getServer().getBannedPlayers().isEmpty()) this.interrupt();
-        Set<OfflinePlayer> playerSet = Bukkit.getServer().getBannedPlayers();
+        Iterator playerSet = Bukkit.getServer().getBannedPlayers().iterator();
         Integer importedPlayers = 0;
-        Integer totalImported   = 0;
-        String[] importArray = new String[40];
-        for (Iterator<OfflinePlayer> i = playerSet.iterator(); i.hasNext();) {
-            OfflinePlayer player = i.next();
+        List<String> importArray = new ArrayList<String>();
+        while (playerSet.hasNext()) {
+            OfflinePlayer player = (OfflinePlayer)playerSet.next();
             if (!BukkitBlockItAPI.isBanned(player.getName())) {
-                importArray[importedPlayers] = player.getName();
-                importedPlayers++;
-                if (importArray.length == 40) {
+                importArray.add(player.getName());
+                if (importArray.size() == 40) {
                     BukkitBlockItAPI.importBans(importArray);
-                    importArray = new String[40];
-                    importedPlayers = 0;
+                    importArray = new ArrayList<String>();
                 }
-                totalImported++;
+                importedPlayers++;
             }
-            Bukkit.getServer().getBannedPlayers().remove(player);
+            player.setBanned(false);
         }
-        if (importArray.length > 0) {
+        if (importArray.size() > 0) {
             BukkitBlockItAPI.importBans(importArray);
         }
-        Bukkit.getLogger().info("[MCBlockIt] " + totalImported + " players imported from banned-players.txt!");
+        Bukkit.getLogger().info(importedPlayers + " players imported from banned-players.txt!");
     }
 }

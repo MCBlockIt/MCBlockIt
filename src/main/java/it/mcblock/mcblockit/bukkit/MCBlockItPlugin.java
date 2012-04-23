@@ -5,6 +5,7 @@ import java.io.File;
 import it.mcblock.mcblockit.api.MCBlockItAPI;
 import it.mcblock.mcblockit.bukkit.command.BanCommand;
 import it.mcblock.mcblockit.bukkit.command.KickCommand;
+import it.mcblock.mcblockit.bukkit.command.LookupCommand;
 import it.mcblock.mcblockit.bukkit.command.UnbanCommand;
 import it.mcblock.mcblockit.bukkit.listener.PlayerConnect;
 
@@ -68,6 +69,7 @@ public class MCBlockItPlugin extends JavaPlugin {
         this.getCommand("gban").setExecutor(new BanCommand());
         this.getCommand("kick").setExecutor(new KickCommand());
         this.getCommand("unban").setExecutor(new UnbanCommand());
+        this.getCommand("lookup").setExecutor(new LookupCommand());
 
         MCBlockItAPI.initialize(new BukkitBlockItAPI(this, apikey, this.getDataFolder()));
 

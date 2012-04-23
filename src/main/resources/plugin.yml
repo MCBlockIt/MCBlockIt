@@ -29,6 +29,11 @@ commands:
     aliases: [pardon]
     permission: mcblockit.unban
     permission-message: You may not unban.
+  lookup:
+    usage: /lookup username
+    description: View user record
+    permission: mcblockit.lookup
+    permission-message: You may not lookup.
 permissions:
   mcblockit.ban.local:
     description: Able to local ban a user
@@ -45,6 +50,8 @@ permissions:
     description: Receive system notices
   mcblockit.unban:
     description: Able to unban a user
+  mcblockit.lookup:
+    description: Able to lookup user history
   mcblockit.*:
     description: Grant ALL the nodes
     default: op
@@ -53,3 +60,4 @@ permissions:
       mcblockit.kick: true
       mcblockit.notifications: true
       mcblockit.unban: true
+      mcblockit.lookup: true

@@ -26,7 +26,7 @@ public class BanImport extends Thread {
             }
             player.setBanned(false);
         }
-        if (importArray.length > 0) {
+        if (importArray.size() > 0) {
             BukkitBlockItAPI.importBans(importArray);
         }
         Bukkit.getLogger().info(importedPlayers + " players imported from banned-players.txt!");

@@ -5,10 +5,7 @@ import it.mcblock.mcblockit.api.MCBlockItAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 
-import java.util.Collection;
-import java.util.Set;
-import java.util.Iterator;
-import java.util.ArrayList
+import java.util.*;
 
 public class BanImport extends Thread {
     @Override

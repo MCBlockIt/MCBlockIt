@@ -8,6 +8,7 @@ import org.bukkit.OfflinePlayer;
 import java.util.Collection;
 import java.util.Set;
 import java.util.Iterator;
+import java.util.ArrayList
 
 public class BanImport extends Thread {
     @Override

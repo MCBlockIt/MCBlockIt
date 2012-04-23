@@ -18,7 +18,7 @@ public class BanImport extends Thread {
             OfflinePlayer player = (OfflinePlayer)playerSet.next();
             if (!BukkitBlockItAPI.isBanned(player.getName())) {
                 importArray.add(player.getName());
-                if (importArray.length == 40) {
+                if (importArray.size() == 40) {
                     BukkitBlockItAPI.importBans(importArray);
                     importArray = new ArrayList<String>();
                 }

@@ -12,18 +12,18 @@ public class BanImport extends Thread {
     @Override
     public void run () {
         if (Bukkit.getServer().getBannedPlayers().isEmpty()) this.interrupt();
-        Set<OfflinePlayer> playerSet = Bukkit.getServer().getBannedPlayers();
+        Iterator playerSet = Bukkit.getServer().getBannedPlayers().iterator();
         Integer importedPlayers = 0;
         String[] importArray = new String[40];
-        for (OfflinePlayer player : playerSet) {
+        while (playerSet.hasNext()) {
+            OfflinePlayer player = playerSet.next();
             if (!BukkitBlockItAPI.isBanned(player.getName())) {
                 importArray[importedPlayers] = player.getName();
-                importedPlayers++;
                 if (importArray.length == 40) {
                     BukkitBlockItAPI.importBans(importArray);
                     importArray = new String[40];
-                    importedPlayers = 0;
                 }
+                importedPlayers++;
             }
             Bukkit.getServer().getBannedPlayers().remove(player);
         }

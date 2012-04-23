@@ -7,17 +7,17 @@ import org.bukkit.OfflinePlayer;
 
 import java.util.Collection;
 import java.util.Set;
+import java.util.Iterator;
 
 public class BanImport extends Thread {
     @Override
     public void run () {
         if (Bukkit.getServer().getBannedPlayers().isEmpty()) this.interrupt();
-        Set<OfflinePlayer> playerSet = Bukkit.getServer().getBannedPlayers();
-        Iterator itr = playerSet.iterator();
+        Iterator playerSet = Bukkit.getServer().getBannedPlayers().iterator();
         Integer importedPlayers = 0;
         String[] importArray = new String[40];
-        while (itr.hasNext()) {
-            OfflinePlayer player = itr.next();
+        while (playerSet.hasNext()) {
+            OfflinePlayer player = playerSet.next();
             if (!BukkitBlockItAPI.isBanned(player.getName())) {
                 importArray[importedPlayers] = player.getName();
                 if (importArray.length == 40) {

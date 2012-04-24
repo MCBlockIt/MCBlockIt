@@ -1,7 +1,5 @@
 package it.mcblock.mcblockit.bukkit;
 
-import it.mcblock.mcblockit.api.BanType;
-import it.mcblock.mcblockit.api.MCBlockItAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 

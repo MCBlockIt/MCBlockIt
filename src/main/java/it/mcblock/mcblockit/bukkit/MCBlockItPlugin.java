@@ -71,7 +71,7 @@ public class MCBlockItPlugin extends JavaPlugin {
         this.getCommand("unban").setExecutor(new UnbanCommand());
         this.getCommand("lookup").setExecutor(new LookupCommand());
 
-        MCBlockItAPI.initialize(new BukkitBlockItAPI(this, apikey, this.getDataFolder()));
+        new BukkitBlockItAPI(this, apikey, this.getDataFolder());
 
         MCBlockItPlugin.instance = this;
 

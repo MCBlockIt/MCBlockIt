@@ -9,7 +9,7 @@ public class BanImport extends Thread {
     @Override
     public void run () {
         if (Bukkit.getServer().getBannedPlayers().isEmpty()) this.interrupt();
-        Iterator playerSet = Bukkit.getServer().getBannedPlayers().iterator();
+        Iterator<OfflinePlayer> playerSet = Bukkit.getServer().getBannedPlayers().iterator();
         Integer importedPlayers = 0;
         List<String> importArray = new ArrayList<String>();
         while (playerSet.hasNext()) {

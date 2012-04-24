@@ -25,7 +25,7 @@ import org.bukkit.entity.Player;
  *         limitations under the License.
  *
  */
-public class BukkitPlayer implements MCBIPlayer {
+public class BukkitPlayer extends MCBIPlayer {
     private final Player player;
 
     public BukkitPlayer(Player player) {

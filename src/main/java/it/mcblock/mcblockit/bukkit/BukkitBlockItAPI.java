@@ -4,6 +4,7 @@ import it.mcblock.mcblockit.api.MCBIConfig;
 import it.mcblock.mcblockit.api.MCBlockItAPI;
 
 import java.io.File;
+import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 
@@ -54,6 +55,21 @@ public class BukkitBlockItAPI extends MCBlockItAPI {
             }
 
         });
+    }
+
+    @Override
+    protected void log(Level level, String message) {
+        Bukkit.getLogger().log(level, message);
+    }
+
+    @Override
+    protected void log(Level level, String message, Throwable thrown) {
+        Bukkit.getLogger().log(level, message, thrown);
+    }
+
+    @Override
+    protected void log(String message) {
+        Bukkit.getLogger().info(message);
     }
 
 }

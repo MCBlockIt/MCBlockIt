@@ -3,21 +3,25 @@ package it.mcblock.mcblockit.bukkit;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 
+import it.mcblock.mcblockit.api.MCBlockItAPI;
+
 import java.util.*;
 
 public class BanImport extends Thread {
     @Override
-    public void run () {
-        if (Bukkit.getServer().getBannedPlayers().isEmpty()) this.interrupt();
-        Iterator<OfflinePlayer> playerSet = Bukkit.getServer().getBannedPlayers().iterator();
+    public void run() {
+        if (Bukkit.getServer().getBannedPlayers().isEmpty()) {
+            this.interrupt();
+        }
+        final Iterator<OfflinePlayer> playerSet = Bukkit.getServer().getBannedPlayers().iterator();
         Integer importedPlayers = 0;
         List<String> importArray = new ArrayList<String>();
         while (playerSet.hasNext()) {
-            OfflinePlayer player = (OfflinePlayer)playerSet.next();
-            if (!BukkitBlockItAPI.isBanned(player.getName())) {
+            final OfflinePlayer player = playerSet.next();
+            if (!MCBlockItAPI.isBanned(player.getName())) {
                 importArray.add(player.getName());
                 if (importArray.size() == 40) {
-                    BukkitBlockItAPI.importBans(importArray);
+                    MCBlockItAPI.importBans(importArray);
                     importArray = new ArrayList<String>();
                 }
                 importedPlayers++;
@@ -25,7 +29,7 @@ public class BanImport extends Thread {
             player.setBanned(false);
         }
         if (importArray.size() > 0) {
-            BukkitBlockItAPI.importBans(importArray);
+            MCBlockItAPI.importBans(importArray);
         }
         Bukkit.getLogger().info(importedPlayers + " players imported from banned-players.txt!");
     }

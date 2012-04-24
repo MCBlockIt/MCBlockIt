@@ -15,8 +15,8 @@ public class LookupCommand implements CommandExecutor {
             return false;
         }
 
-        UserData userData = MCBlockItAPI.getFreshUserData(args[0]);
-        BanData[] banData = userData.getBans();
+        final UserData userData = MCBlockItAPI.getFreshUserData(args[0]);
+        final BanData[] banData = userData.getBans();
 
         sender.sendMessage(ChatColor.RED + "[MCBlockIt] " + ChatColor.WHITE + "User " + ChatColor.AQUA + userData.getUsername() + ChatColor.WHITE + " has " + ChatColor.YELLOW + userData.getReputation() + ChatColor.WHITE + " reputation.");
 
@@ -26,7 +26,7 @@ public class LookupCommand implements CommandExecutor {
 
         if (banData.length > 0) {
             sender.sendMessage(ChatColor.RED + "[MCBlockIt] " + ChatColor.DARK_RED + "Global Bans:");
-            for (BanData ban : banData) {
+            for (final BanData ban : banData) {
                 sender.sendMessage(ChatColor.RED + "[MCBlockIt] " + ChatColor.AQUA + ban.getServer() + ChatColor.WHITE + ": " + ban.getReason());
             }
         }

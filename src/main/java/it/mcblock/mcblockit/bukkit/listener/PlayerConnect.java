@@ -1,8 +1,7 @@
 package it.mcblock.mcblockit.bukkit.listener;
 
+import it.mcblock.mcblockit.api.MCBlockItAPI;
 import it.mcblock.mcblockit.bukkit.BukkitPlayer;
-import it.mcblock.mcblockit.bukkit.BukkitBlockItAPI;
-
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -28,28 +27,27 @@ import org.bukkit.event.player.PlayerQuitEvent;
  *         WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *         See the License for the specific language governing permissions and
  *         limitations under the License.
- *
+ * 
  */
 public class PlayerConnect implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerPreLogin(PlayerPreLoginEvent event) {
-        if (BukkitBlockItAPI.isBanned(event.getName())) {
-            event.disallow(PlayerPreLoginEvent.Result.KICK_BANNED, BukkitBlockItAPI.KICK_REASON_BANNED);
+    public void onPlayerLogin(PlayerLoginEvent event) {
+        if (!MCBlockItAPI.playerJoin(new BukkitPlayer(event.getPlayer()))) {
+            event.disallow(PlayerLoginEvent.Result.KICK_BANNED, MCBlockItAPI.KICK_REASON_BLOCKED);
         }
     }
-    
+
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerLogin(PlayerLoginEvent event){
-        if(!BukkitBlockItAPI.playerJoin(new BukkitPlayer(event.getPlayer()))){
-            event.disallow(PlayerLoginEvent.Result.KICK_BANNED, BukkitBlockItAPI.KICK_REASON_BLOCKED);
+    public void onPlayerPreLogin(PlayerPreLoginEvent event) {
+        if (MCBlockItAPI.isBanned(event.getName())) {
+            event.disallow(PlayerPreLoginEvent.Result.KICK_BANNED, MCBlockItAPI.KICK_REASON_BANNED);
         }
     }
-    
+
     @EventHandler(priority = EventPriority.MONITOR)
-    public void onPlayerQuit(PlayerQuitEvent event){
-        BukkitBlockItAPI.playerQuit(new BukkitPlayer(event.getPlayer()));
+    public void onPlayerQuit(PlayerQuitEvent event) {
+        MCBlockItAPI.playerQuit(new BukkitPlayer(event.getPlayer()));
     }
-       
 
 }

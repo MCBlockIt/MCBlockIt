@@ -30,7 +30,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  *         WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *         See the License for the specific language governing permissions and
  *         limitations under the License.
- *
+ * 
  */
 public class MCBlockItPlugin extends JavaPlugin {
 
@@ -48,15 +48,15 @@ public class MCBlockItPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        final File configFile=new File(this.getDataFolder(),"config.yml");
-        if(!configFile.exists()){
+        final File configFile = new File(this.getDataFolder(), "config.yml");
+        if (!configFile.exists()) {
             this.saveDefaultConfig();
             this.getLogger().info("Creating empty config.yml");
             this.getLogger().info("You need to set up your config and restart");
             this.getServer().getPluginManager().disablePlugin(this);
             return;
         }
-        
+
         final String apikey = this.getConfig().getString("APIKEY");
         if ((apikey == null) || (apikey.length() != 36)) {
             this.getLogger().warning("Set up your config and restart");

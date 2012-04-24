@@ -45,19 +45,6 @@ public class BukkitBlockItAPI extends MCBlockItAPI {
     }
 
     @Override
-    protected void shutdown() {
-        Bukkit.getScheduler().scheduleSyncDelayedTask(this.plugin, new Runnable() {
-
-            @Override
-            public void run() {
-                BukkitBlockItAPI.this.plugin.getLogger().info("Shutting down...");
-                Bukkit.getPluginManager().disablePlugin(BukkitBlockItAPI.this.plugin);
-            }
-
-        });
-    }
-
-    @Override
     protected void log(Level level, String message) {
         Bukkit.getLogger().log(level, message);
     }
@@ -70,6 +57,19 @@ public class BukkitBlockItAPI extends MCBlockItAPI {
     @Override
     protected void log(String message) {
         Bukkit.getLogger().info(message);
+    }
+
+    @Override
+    protected void shutdown() {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(this.plugin, new Runnable() {
+
+            @Override
+            public void run() {
+                BukkitBlockItAPI.this.plugin.getLogger().info("Shutting down...");
+                Bukkit.getPluginManager().disablePlugin(BukkitBlockItAPI.this.plugin);
+            }
+
+        });
     }
 
 }

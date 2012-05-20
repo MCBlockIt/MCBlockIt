@@ -7,6 +7,7 @@ import it.mcblock.mcblockit.api.Utils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 /**
  * Ban command
@@ -35,6 +36,10 @@ public class BanCommand implements CommandExecutor {
         if (args.length < 2) {
             return false;
         }
+        Player player = null;
+        if (sender instanceof Player) {
+            player = (Player) sender;
+        }
         final String reason = Utils.combineSplit(args, " ", 1, args.length - 1);
         BanType type;
         if (label.equalsIgnoreCase("gban") || label.equalsIgnoreCase("gb")) {
@@ -42,7 +47,7 @@ public class BanCommand implements CommandExecutor {
         } else {
             type = BanType.LOCAL;
         }
-        MCBlockItAPI.ban(args[0], sender.getName(), type, reason);
+        MCBlockItAPI.ban(args[0], player == null ? "[CONSOLE]" : player.toString(), type, reason);
         return true;
     }
 

@@ -47,7 +47,7 @@ public class BanCommand implements CommandExecutor {
         } else {
             type = BanType.LOCAL;
         }
-        MCBlockItAPI.ban(args[0], player == null ? "[CONSOLE]" : player.toString(), type, reason);
+        MCBlockItAPI.ban(args[0], player == null ? "[CONSOLE]" : player.getName(), type, reason);
         return true;
     }
 

@@ -44,6 +44,7 @@ public class BukkitBlockItAPI extends MCBlockItAPI {
         return this.config;
     }
 
+    @Override
     public String getVersion () {
         return plugin.getDescription().getVersion();
     }

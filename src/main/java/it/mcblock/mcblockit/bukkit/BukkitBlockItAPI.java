@@ -45,6 +45,11 @@ public class BukkitBlockItAPI extends MCBlockItAPI {
     }
 
     @Override
+    public String getVersion () {
+        return plugin.getDescription().getVersion();
+    }
+
+    @Override
     protected void log(Level level, String message) {
         Bukkit.getLogger().log(level, message);
     }

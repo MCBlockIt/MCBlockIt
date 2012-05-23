@@ -4,7 +4,7 @@
 #     Reputation: A number, can have decimal eg 0.1
 #     Bans: An integer. 
 #     Flags: Array of flags not allowed to join the server
-#       example: value: ['compromised'] or ['compromised','highalts']
+#       example: value: ['SCA'] or ['SCA','ASB']
 #   The value for reputation can have a decimal eg. 0.1
 #   
 #  Users attempting to join counts AT or above/below that value are blocked
@@ -25,6 +25,6 @@ restrictions:
     value: 5
   flags:
     enable: false
-    value: ['compromised']
+    value: ['SCA']
 settings:
   timeout: 5

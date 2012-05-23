@@ -17,6 +17,12 @@ commands:
     description: Global ban a user
     permission: mcblockit.ban.global
     permission-message: You may not global ban.
+  tempban:
+    usage: /tempban username time(d/h/m/s)
+    aliases: [tb]
+    description: Temporarily ban a user
+    permission: mcblockit.ban.temp
+    permission-message: You may not temporarily ban.
   kick:
     usage: /kick username [reason]
     aliases: [k]
@@ -39,11 +45,14 @@ permissions:
     description: Able to local ban a user
   mcblockit.ban.global:
     description: Able to global ban a user
+  mcblockit.ban.temp:
+    description: Able to temporarily ban a uer
   mcblockit.ban:
-    description: Able to ban a user globally and locally
+    description: Able to ban a user globally, locally and temporarily
     children:
       mcblockit.ban.local: true
       mcblockit.ban.global: true
+      mcblockit.ban.temp: true
   mcblockit.kick:
     description: Able to kick a user
   mcblockit.notifications:

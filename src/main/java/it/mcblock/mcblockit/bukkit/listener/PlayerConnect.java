@@ -42,6 +42,9 @@ public class PlayerConnect implements Listener {
     public void onPlayerPreLogin(PlayerPreLoginEvent event) {
         if (MCBlockItAPI.isBanned(event.getName())) {
             event.disallow(PlayerPreLoginEvent.Result.KICK_BANNED, MCBlockItAPI.KICK_REASON_BANNED);
+        } else {
+            String tempBan = MCBlockItAPI.isTempBanned(event.getName());
+            if (tempBan != null) event.disallow(PlayerPreLoginEvent.Result.KICK_BANNED, MCBlockItAPI.KICK_REASON_TEMP_BANNED + tempBan);
         }
     }
 

@@ -40,14 +40,18 @@ public class BanCommand implements CommandExecutor {
         if (sender instanceof Player) {
             player = (Player) sender;
         }
-        final String reason = Utils.combineSplit(args, " ", 1, args.length - 1);
-        BanType type;
-        if (label.equalsIgnoreCase("gban") || label.equalsIgnoreCase("gb")) {
-            type = BanType.GLOBAL;
+        if (label.equalsIgnoreCase("tb") || label.equalsIgnoreCase("tempban")) {
+            if(!MCBlockItAPI.tempBan(args[0], player == null ? "[CONSOLE]" : player.getName(), args[1])) return false;
         } else {
-            type = BanType.LOCAL;
+            final String reason = Utils.combineSplit(args, " ", 1, args.length - 1);
+            BanType type;
+            if (label.equalsIgnoreCase("gban") || label.equalsIgnoreCase("gb")) {
+                type = BanType.GLOBAL;
+            } else {
+                type = BanType.LOCAL;
+            }
+            MCBlockItAPI.ban(args[0], player == null ? "[CONSOLE]" : player.getName(), type, reason);
         }
-        MCBlockItAPI.ban(args[0], player == null ? "[CONSOLE]" : player.getName(), type, reason);
         return true;
     }
 

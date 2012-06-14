@@ -1,5 +1,6 @@
 package it.mcblock.mcblockit.bukkit.command;
 
+import it.mcblock.mcblockit.api.FlagType;
 import it.mcblock.mcblockit.api.MCBlockItAPI;
 import it.mcblock.mcblockit.api.userdata.UserData;
 import it.mcblock.mcblockit.api.userdata.UserData.BanData;
@@ -18,6 +19,7 @@ public class LookupCommand implements CommandExecutor {
         final UserData userData = MCBlockItAPI.getFreshUserData(args[0]);
         final BanData[] banData = userData.getBans();
         final String[] altAccounts = userData.getAltAccounts();
+        final String[] flags = userData.getFlags();
 
         sender.sendMessage(ChatColor.RED + "[MCBlockIt] " + ChatColor.WHITE + "User " + ChatColor.AQUA + userData.getUsername() + ChatColor.WHITE + " has " + ChatColor.YELLOW + userData.getReputation() + ChatColor.WHITE + " reputation.");
 
@@ -49,6 +51,13 @@ public class LookupCommand implements CommandExecutor {
             }
             if (tempList.length() > 0) {
                 sender.sendMessage(ChatColor.RED + "[MCBlockIt] " + ChatColor.AQUA + tempList);
+            }
+        }
+
+        if (flags.length > 0) {
+            sender.sendMessage(ChatColor.RED + "[MCBlockIt] " + ChatColor.LIGHT_PURPLE + "Flags:");
+            for (final String flag : flags) {
+                sender.sendMessage(ChatColor.RED + "[MCBlockIt] " + ChatColor.WHITE + flag.toUpperCase() + ": " + FlagType.valueOf(flag.toUpperCase()).getDescription());
             }
         }
 

@@ -29,12 +29,17 @@ import org.bukkit.configuration.Configuration;
  */
 public class BukkitConfig implements MCBIConfig {
 
+    private final String defaultBanReason;
     private final int banRestriction;
     private List<String> flagRestriction;
     private final double reputationRestriction;
     private final boolean banRestrictionEnabled;
     private final boolean flagRestrictionEnabled;
     private final boolean reputationRestrictionEnabled;
+    private final boolean userIPRecordingEnabled;
+    private final boolean loginNotificationEnabled;
+    private final boolean autoRollbackEnabled;
+
     private int timeout;
 
     public BukkitConfig(Configuration config) {
@@ -47,10 +52,19 @@ public class BukkitConfig implements MCBIConfig {
         }
         this.reputationRestrictionEnabled = config.getBoolean("restriction.reputation.enable", true);
         this.reputationRestriction = config.getDouble("restriction.reputation.value", 0.0D);
+        this.userIPRecordingEnabled = config.getBoolean("settings.useriprecording", true);
         this.timeout = config.getInt("settings.timeout", 5);
+        this.defaultBanReason = config.getString("setting.defaultreason", "You have been banned!");
+        this.loginNotificationEnabled = config.getBoolean("settings.loginnotification", true);
+        this.autoRollbackEnabled = config.getBoolean("settings.logblock", false);
         if (this.timeout < 5) {
             this.timeout = 5;
         }
+    }
+
+    @Override
+    public String getDefaultBanReason() {
+        return this.defaultBanReason;
     }
 
     @Override
@@ -86,6 +100,20 @@ public class BukkitConfig implements MCBIConfig {
     @Override
     public boolean isReputationRestrictionEnabled() {
         return this.reputationRestrictionEnabled;
+    }
+
+    @Override
+    public boolean isUserIPRecordingEnabled() {
+        return this.userIPRecordingEnabled;
+    }
+
+    @Override
+    public boolean isLoginNotificationEnabled() {
+        return this.loginNotificationEnabled;
+    }
+
+    public boolean isAutoRollbackEnabled () {
+        return this.autoRollbackEnabled;
     }
 
 }

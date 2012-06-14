@@ -68,4 +68,16 @@ public class BukkitPlayer extends MCBIPlayer {
         });
     }
 
+    @Override
+    public void sendMessage(final String message) {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(MCBlockItPlugin.instance, new Runnable() {
+
+            @Override
+            public void run() {
+                BukkitPlayer.this.player.sendMessage(message);
+            }
+
+        });
+    }
+
 }

@@ -4,6 +4,7 @@ description: ${project.description}
 author: mbaxter
 url: http://mcblock.it
 version: '${project.version}'
+softdepend: [LogBlock]
 commands:
   ban:
     usage: /ban username reason
@@ -46,7 +47,7 @@ permissions:
   mcblockit.ban.global:
     description: Able to global ban a user
   mcblockit.ban.temp:
-    description: Able to temporarily ban a uer
+    description: Able to temporarily ban a user
   mcblockit.ban:
     description: Able to ban a user globally, locally and temporarily
     children:

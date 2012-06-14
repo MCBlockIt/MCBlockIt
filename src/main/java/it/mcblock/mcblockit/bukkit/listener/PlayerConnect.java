@@ -1,6 +1,8 @@
 package it.mcblock.mcblockit.bukkit.listener;
 
+import it.mcblock.mcblockit.api.BanType;
 import it.mcblock.mcblockit.api.MCBlockItAPI;
+import it.mcblock.mcblockit.api.userdata.UserData;
 import it.mcblock.mcblockit.bukkit.BukkitPlayer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -8,6 +10,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+
+import java.util.Arrays;
 
 /**
  * Listener for player connection based events
@@ -33,7 +37,8 @@ public class PlayerConnect implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerLogin(PlayerLoginEvent event) {
-        if (!MCBlockItAPI.playerJoin(new BukkitPlayer(event.getPlayer()))) {
+        BukkitPlayer player = new BukkitPlayer(event.getPlayer());
+        if (!MCBlockItAPI.playerJoin(player)) {
             event.disallow(PlayerLoginEvent.Result.KICK_BANNED, MCBlockItAPI.KICK_REASON_BLOCKED);
         }
     }

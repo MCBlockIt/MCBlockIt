@@ -1,7 +1,10 @@
 package it.mcblock.mcblockit.bukkit;
 
 import java.io.File;
+import java.util.logging.Level;
 
+import de.diddiz.LogBlock.Consumer;
+import de.diddiz.LogBlock.LogBlock;
 import it.mcblock.mcblockit.api.MCBlockItAPI;
 import it.mcblock.mcblockit.bukkit.command.BanCommand;
 import it.mcblock.mcblockit.bukkit.command.KickCommand;
@@ -9,6 +12,7 @@ import it.mcblock.mcblockit.bukkit.command.LookupCommand;
 import it.mcblock.mcblockit.bukkit.command.UnbanCommand;
 import it.mcblock.mcblockit.bukkit.listener.PlayerConnect;
 
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -35,6 +39,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class MCBlockItPlugin extends JavaPlugin {
 
     public static MCBlockItPlugin instance;
+    public Consumer lbconsumer = null;
 
     @Override
     public void onDisable() {
@@ -73,6 +78,16 @@ public class MCBlockItPlugin extends JavaPlugin {
         this.getCommand("lookup").setExecutor(new LookupCommand());
 
         new BukkitBlockItAPI(this, apikey, this.getDataFolder());
+
+        if (this.getConfig().getBoolean("settings.logblock")) {
+            Plugin logBlock = this.getServer().getPluginManager().getPlugin("LogBlock");
+            if (logBlock != null) {
+                lbconsumer = ((LogBlock)logBlock).getConsumer();
+                MCBlockItAPI.logAdd(Level.INFO, "[MCBlockIt] LogBlock hook activated!");
+            } else {
+                MCBlockItAPI.logAdd(Level.WARNING, "[MCBlockIt] LogBlock could not be found, unable to activate hook");
+            }
+        }
 
         MCBlockItPlugin.instance = this;
 

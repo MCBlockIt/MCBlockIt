@@ -15,6 +15,17 @@
 #  Settings:
 #   timeout: How long a user's data is cached, in minutes
 #             minimum 5
+#   logblock: Enable LogBlock intergration to automatically rollback
+#             players when banned
+#             default: false
+#   defaultreason: The default ban reason used if none is provided
+#             default: 'You have been banned!'
+#   useriprecording: Submit username and IP address to MCBlockIt when a
+#                    user logs in. Used for alt account tracking.
+#             default: true
+#   loginnotification: Notify admins (with associated permissions) upon
+#                      user login about their account status
+#             default: true
 APIKEY: changeme
 restrictions:
   reputation:
@@ -28,3 +39,7 @@ restrictions:
     value: ['SCA']
 settings:
   timeout: 5
+  logblock: false
+  defaultreason: You have been banned!
+  useriprecording: true
+  loginnotification: true

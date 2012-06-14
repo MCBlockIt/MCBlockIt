@@ -41,7 +41,7 @@ public class BanCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args.length < 2) {
+        if (args.length < 1) {
             return false;
         }
         Player player = null;
@@ -77,7 +77,7 @@ public class BanCommand implements CommandExecutor {
                     MCBlockItAPI.logAdd(Level.WARNING, "[MCBlockIt] LogBlock error encountered while rolling back " + args[0] + ", requested by " + (player == null ? "[CONSOLE]" : player.getName()));
                 }
             }
-            if (reason.trim().isEmpty()) {
+            if (reason.trim().isEmpty() || args.length > 2) {
                 MCBlockItAPI.ban(args[0], player == null ? "[CONSOLE]" : player.getName(), type);
             } else {
                 MCBlockItAPI.ban(args[0], player == null ? "[CONSOLE]" : player.getName(), type, reason);

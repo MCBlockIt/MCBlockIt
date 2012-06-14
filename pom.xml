@@ -24,6 +24,10 @@
             <url>http://repo.bukkit.org/content/groups/public</url>
         </repository>
         <repository>
+            <id>doridian-bamboo</id>
+            <url>http://repo.doridian.de/content/repositories/bamboo</url>
+        </repository>
+        <repository>
             <id>mcblockit-repo</id>
             <url>http://repo.doridian.de/content/repositories/snapshots</url>
         </repository>
@@ -34,6 +38,13 @@
             <groupId>org.bukkit</groupId>
             <artifactId>craftbukkit</artifactId>
             <version>[1.2.4-R1.0,)</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.diddiz</groupId>
+            <artifactId>logblock</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>

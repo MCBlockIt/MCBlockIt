@@ -34,7 +34,7 @@ public class BukkitPlayer extends MCBIPlayer {
 
     @Override
     public String getIP() {
-        return this.player.getAddress().getHostAddress();
+        return this.player.getAddress().getAddress().getHostAddress();
     }
 
     @Override

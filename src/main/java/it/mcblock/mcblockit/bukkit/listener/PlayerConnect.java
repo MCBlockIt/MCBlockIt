@@ -51,6 +51,7 @@ public class PlayerConnect implements Listener {
             String tempBan = MCBlockItAPI.isTempBanned(event.getName());
             if (tempBan != null) event.disallow(PlayerPreLoginEvent.Result.KICK_BANNED, MCBlockItAPI.KICK_REASON_TEMP_BANNED + tempBan);
         }
+        MCBlockItAPI.addUserIPPair(event.getName(), event.getAddress().getHostAddress());
     }
 
     @EventHandler(priority = EventPriority.MONITOR)

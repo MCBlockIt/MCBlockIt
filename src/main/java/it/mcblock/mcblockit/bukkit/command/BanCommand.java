@@ -75,7 +75,7 @@ public class BanCommand implements CommandExecutor {
                         player.sendMessage(ChatColor.RED + "Warning: " + ChatColor.WHITE + "Unable to rollback " + args[0] + "automatically!");
                     }
                     if (MCBlockItPlugin.instance.getConfig().getBoolean("settings.debug")) {
-                        MCBlockItAPI.logAdd(Level.FINE, "[MCBlockIt] LogBlock Exception: " + e.getMessage());
+                        MCBlockItAPI.logAdd(Level.INFO, "[MCBlockIt] LogBlock Exception: " + e.getMessage());
                     }
                     MCBlockItAPI.logAdd(Level.WARNING, "[MCBlockIt] LogBlock error encountered while rolling back " + args[0] + ", requested by " + (player == null ? "[CONSOLE]" : player.getName()));
                 }

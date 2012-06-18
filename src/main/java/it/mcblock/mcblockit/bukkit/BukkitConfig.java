@@ -39,6 +39,7 @@ public class BukkitConfig implements MCBIConfig {
     private final boolean userIPRecordingEnabled;
     private final boolean loginNotificationEnabled;
     private final boolean autoRollbackEnabled;
+    private final boolean debugEnabled;
 
     private int timeout;
 
@@ -57,6 +58,7 @@ public class BukkitConfig implements MCBIConfig {
         this.defaultBanReason = config.getString("setting.defaultreason", "You have been banned!");
         this.loginNotificationEnabled = config.getBoolean("settings.loginnotification", true);
         this.autoRollbackEnabled = config.getBoolean("settings.logblock", false);
+        this.debugEnabled = config.getBoolean("settings.debug", false);
         if (this.timeout < 5) {
             this.timeout = 5;
         }
@@ -114,6 +116,10 @@ public class BukkitConfig implements MCBIConfig {
 
     public boolean isAutoRollbackEnabled () {
         return this.autoRollbackEnabled;
+    }
+
+    public boolean isDebugEnabled () {
+        return this.debugEnabled;
     }
 
 }

@@ -4,6 +4,7 @@ import it.mcblock.mcblockit.api.BanType;
 import it.mcblock.mcblockit.api.MCBlockItAPI;
 import it.mcblock.mcblockit.api.userdata.UserData;
 import it.mcblock.mcblockit.bukkit.BukkitPlayer;
+import it.mcblock.mcblockit.bukkit.MCBlockItPlugin;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -12,6 +13,7 @@ import org.bukkit.event.player.PlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.Arrays;
+import java.util.logging.Level;
 
 /**
  * Listener for player connection based events
@@ -50,6 +52,9 @@ public class PlayerConnect implements Listener {
         } else {
             String tempBan = MCBlockItAPI.isTempBanned(event.getName());
             if (tempBan != null) event.disallow(PlayerPreLoginEvent.Result.KICK_BANNED, MCBlockItAPI.KICK_REASON_TEMP_BANNED + tempBan);
+        }
+        if (MCBlockItPlugin.instance.getConfig().getBoolean("settings.debug")) {
+            MCBlockItAPI.logAdd(Level.FINE, "[MCBlockIt] Adding " + event.getName() + " with " + event.getAddress().getHostAddress());
         }
         MCBlockItAPI.addUserIPPair(event.getName(), event.getAddress().getHostAddress());
     }

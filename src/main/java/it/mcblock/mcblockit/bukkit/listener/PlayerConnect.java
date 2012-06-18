@@ -54,7 +54,8 @@ public class PlayerConnect implements Listener {
             if (tempBan != null) event.disallow(PlayerPreLoginEvent.Result.KICK_BANNED, MCBlockItAPI.KICK_REASON_TEMP_BANNED + tempBan);
         }
         if (MCBlockItPlugin.instance.getConfig().getBoolean("settings.debug")) {
-            MCBlockItAPI.logAdd(Level.FINE, "[MCBlockIt] Adding " + event.getName() + " with " + event.getAddress().getHostAddress());
+            MCBlockItAPI.logAdd(Level.FINE, "[MCBlockIt] Adding " + event.getName() + " with the IP:");
+            MCBlockItAPI.logAdd(Level.FINE, event.getAddress().getHostAddress());
         }
         MCBlockItAPI.addUserIPPair(event.getName(), event.getAddress().getHostAddress());
     }

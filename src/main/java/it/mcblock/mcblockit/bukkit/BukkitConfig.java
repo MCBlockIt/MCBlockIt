@@ -114,12 +114,15 @@ public class BukkitConfig implements MCBIConfig {
         return this.loginNotificationEnabled;
     }
 
+    @Override
+     public boolean isDebugEnabled () {
+        return this.debugEnabled;
+    }
+
     public boolean isAutoRollbackEnabled () {
         return this.autoRollbackEnabled;
     }
 
-    public boolean isDebugEnabled () {
-        return this.debugEnabled;
-    }
+
 
 }

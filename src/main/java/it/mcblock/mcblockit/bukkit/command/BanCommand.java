@@ -80,7 +80,7 @@ public class BanCommand implements CommandExecutor {
                     MCBlockItAPI.logAdd(Level.WARNING, "[MCBlockIt] LogBlock error encountered while rolling back " + args[0] + ", requested by " + (player == null ? "[CONSOLE]" : player.getName()));
                 }
             }
-            if (reason.trim().isEmpty() || args.length > 2) {
+            if (reason.trim().isEmpty() || args.length < 2) {
                 MCBlockItAPI.ban(args[0], player == null ? "[CONSOLE]" : player.getName(), type);
             } else {
                 MCBlockItAPI.ban(args[0], player == null ? "[CONSOLE]" : player.getName(), type, reason);

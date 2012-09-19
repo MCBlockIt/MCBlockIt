@@ -105,6 +105,7 @@
                             <artifactSet>
                                 <includes>
                                     <include>it.mcblock:mcblockitapi</include>
+                                    <include>com.google.code.gson:gson</include>
                                 </includes>
                             </artifactSet>
                         </configuration>
